@@ -1,0 +1,31 @@
+---
+title: "logistic"
+author: '3'
+date: "2024-11-06"
+output: html_document
+---
+ 
+```{r cars}
+#################
+# Generate Data #
+#################
+set.seed(051221)
+n<-100
+x<-rnorm(n)
+X<-cbind(1,x)
+beta<-c(-1,1)
+eta<-X%*%beta
+mu<-exp(eta)/(1+exp(eta))
+y<-rbinom(n,1,mu)
+fit<-summary(glm(y~x,family="binomial"))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
